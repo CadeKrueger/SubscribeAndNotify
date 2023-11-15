@@ -45,6 +45,8 @@ public class Program
         subJer.PrintNotificationCount(); // 4
         subSeb.PrintNotificationCount(); // 3
 
+        subTom.UnsubscribeFrom(chGamer);
+
         chGamer.PublishVideo("Going Forward");
 
 
