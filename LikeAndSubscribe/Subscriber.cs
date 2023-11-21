@@ -11,7 +11,7 @@ namespace LikeAndSubscribe
     public class Subscriber
     {
         public String subscriberName;
-        private List<Notification> notificationList = new List<Notification>();
+        private List<Notification> notificationList = new();
 
         public Subscriber(String name)
         {
@@ -20,11 +20,17 @@ namespace LikeAndSubscribe
 
         public void SubscribeTo(Channel channel)
         {
-
+            channel.AddSubscriber(this);
         }
 
-        public void UnsubscribeFrom(Channel channel) {
-            
+        public void UnsubscribeFrom(Channel channel) 
+        {
+            channel.RemoveSubscriber(this);
+        }
+
+        public void AddNotification(Notification notification)
+        {
+            this.notificationList.Add(notification);
         }
 
         public void PrintNotificationCount()
