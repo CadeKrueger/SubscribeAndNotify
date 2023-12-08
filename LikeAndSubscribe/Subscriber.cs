@@ -20,16 +20,45 @@ namespace LikeAndSubscribe
 
         public void SubscribeTo(Channel channel)
         {
-
+            channel.UpdateSubscriberStatus(this, VIEWER_TYPE.NORMAL);
         }
 
-        public void UnsubscribeFrom(Channel channel) {
-            
+        public void UnsubscribeFrom(Channel channel)
+        {
+            channel.UpdateSubscriberStatus(this, VIEWER_TYPE.BLOCKED);
         }
+
+        public void AddNotification(Notification notification)
+        {
+            this.notificationList.Add(notification);
+        }
+
+        public void Like(Channel channel)
+        {
+            channel.UpdateSubscriberStatus(this, VIEWER_TYPE.LIKED);
+        }
+
+        public void Block(Channel channel)
+        {
+            channel.UpdateSubscriberStatus(this, VIEWER_TYPE.BLOCKED);
+        }
+
+        public void RingThatBell(Channel channel)
+        {
+            channel.UpdateSubscriberStatus(this, VIEWER_TYPE.BELL);
+        }
+
+        public void UnringThatBell(Channel channel)
+        {
+            channel.UpdateSubscriberStatus(this, VIEWER_TYPE.NORMAL);
+        }
+
+
+        public int GetNotificationCount() { return notificationList.Count(); }
 
         public void PrintNotificationCount()
         {
-            Console.WriteLine(String.Format("{0} you have {1} notifications.", subscriberName, notificationList.Count()));
+            Console.WriteLine("{0} you have {1} notification(s).", subscriberName, GetNotificationCount());
         }
 
         public void PrintNotifications()

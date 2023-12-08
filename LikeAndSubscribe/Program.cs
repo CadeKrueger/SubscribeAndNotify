@@ -4,7 +4,7 @@ using System.Net;
 
 public class Program
 {
-    public static void Main()
+    public static void Main2()
     {
         Subscriber subTom = new Subscriber("Tom");
         Subscriber subJer = new Subscriber("Jerry");
